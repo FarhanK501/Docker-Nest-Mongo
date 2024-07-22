@@ -1,28 +1,28 @@
-version: 3.8
+version: "3.8"
 
 services:
   backend:
-    build: 
+    build:
       context: .
-      dockerfile: ./src/Dockerfile
+      dockerfile: Dockerfile # brought the Docker file out of src folder.
     ports:
-      - 3000:3000
+      - "3000:3000"
     env_file:
       - .env
-    depends_on:
-      - mongodb
     volumes:
       - .:/opt/app
+    command: sh -c "npm install -g @nestjs/cli && npm run start:dev"  # Not running this from Dockerfile anymore.
 
   mongodb:
-    image: mongodb:latest
+    image: mongo:latest
     ports:
-      - 27017:27017
+      - "27017:27017"
     environment:
-      - MONGO_INITDB_ROOT_USERNAME: root
-      - MONGO_INITDB_ROOT_PASSWORD: password
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
     volumes:
-      - mongo-data:data/db
+      - mongo-data:/data/db
+
 volumes:
   mongo-data:
     driver: local
