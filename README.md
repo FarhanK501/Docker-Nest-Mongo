@@ -147,6 +147,3 @@ Feel free to open issues or submit pull requests if you find bugs or have improv
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-```
-
-This README provides comprehensive instructions for setting up, running, and troubleshooting the application both locally and in a Kubernetes environment.
