@@ -1,6 +1,5 @@
 Sure, here is a detailed `README.md` for your repository:
 
-```markdown
 # Docker-Nest-Mongo
 
 This repository contains the code for a simple CRUD application built with NestJS and MongoDB, deployed using Docker and Kubernetes.
