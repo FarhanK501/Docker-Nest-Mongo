@@ -1,0 +1,32 @@
+# Deployment for NestJS Backend
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nestjs-backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nestjs-backend
+  template:
+    metadata:
+      labels:
+        app: nestjs-backend
+    spec:
+      containers:
+      - name: nestjs-backend
+        image: f4rhank501/backend:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+        env:  # Should be handled differently, this just for demo purposes.
+          - name: DB_PORT
+            value: "27017"
+          - name: DATABASE_URL
+            value: mongodb://nest:nest@mongodb:27017/nestjsDB?authSource=admin
+          - name: APP_PORT
+            value: "3000"
+          - name: MONGO_INITDB_ROOT_USERNAME
+            value: nest
+          - name: MONGO_INITDB_ROOT_PASSWORD
+            value: nest

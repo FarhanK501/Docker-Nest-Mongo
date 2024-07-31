@@ -9,15 +9,13 @@ services:
       - "3000:3000"
     env_file:
       - .env
-    volumes:
-      - .:/opt/app
     command: sh -c "npm install -g @nestjs/cli && npm run start:dev"  # Not running this from Dockerfile anymore.
 
   mongodb:
     image: mongo:latest
     ports:
       - "27017:27017"
-    environment:
+    environment:  # Should be handled differently, this just for demo purposes.
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: password
     volumes:

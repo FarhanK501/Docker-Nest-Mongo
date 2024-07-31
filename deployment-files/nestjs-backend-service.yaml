@@ -1,0 +1,14 @@
+# Service for NestJS Backend
+apiVersion: v1
+kind: Service
+metadata:
+  name: nestjs-backend-service
+spec:
+  selector:
+    app: nestjs-backend
+  type: NodePort
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 3000
+    nodePort: 30081
